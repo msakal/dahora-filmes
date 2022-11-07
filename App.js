@@ -1,21 +1,48 @@
-import { Button, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import {
+  Image,
+  Pressable,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
+import logo from "./assets/images/logo.png";
+import { useFonts } from "expo-font";
 import React from "react";
+const corPrimaria = "#5451a6";
 
 const App = () => {
+  const [fonteCarregada] = useFonts({
+    monoton: require("./assets/fonts/Monoton-Regular.ttf"),
+  });
+  /* A condicional abaixo serve apenas para dar um pequeno tempo para carregamento */
+  if (!fonteCarregada) return <Text>Carregando...</Text>;
+
   return (
     <SafeAreaView style={estilos.container}>
       <View style={estilos.viewLogo}>
-        <Text>Dá Hora Filmes</Text>
+        <Image style={estilos.logo} source={logo} />
+        <Text style={estilos.tituloApp}>Dá Hora Filmes</Text>
       </View>
 
       <View style={estilos.viewBotoes}>
-        <Button title="Buscar Filmes" />
-        <Button title="Favoritos" />
+        <Pressable style={estilos.botaoInicial}>
+          <Text style={estilos.textoBotao}>Buscar Filmes</Text>
+        </Pressable>
+
+        <Pressable style={estilos.botaoInicial}>
+          <Text style={estilos.textoBotao}>Favoritos</Text>
+        </Pressable>
       </View>
 
       <View style={estilos.viewRodape}>
-        <Button title="Privacidade" />
-        <Button title="Sobre" />
+        <Pressable style={estilos.botaoRodape}>
+          <Text style={estilos.textoBotao}>Privacidade</Text>
+        </Pressable>
+
+        <Pressable style={estilos.botaoRodape}>
+          <Text style={estilos.textoBotao}>Sobre</Text>
+        </Pressable>
       </View>
     </SafeAreaView>
   );
@@ -25,19 +52,40 @@ export default App;
 
 const estilos = StyleSheet.create({
   container: {
-    backgroundColor: "yellow",
+    backgroundColor: "white",
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
   },
 
+  logo: {
+    width: 128,
+    height: 128,
+  },
+
+  botaoInicial: {
+    borderStyle: "solid",
+    borderWidth: 2,
+    padding: 16,
+    backgroundColor: corPrimaria,
+  },
+
+  textoBotao: {
+    color: "white",
+  },
+
   viewLogo: {
     flex: 3,
     width: "80%",
-    backgroundColor: "green",
     textAlign: "center",
     justifyContent: "flex-end",
     alignItems: "center",
+  },
+
+  tituloApp: {
+    fontSize: 28,
+    fontFamily: "monoton",
+    color: corPrimaria,
   },
 
   viewBotoes: {
@@ -45,7 +93,6 @@ const estilos = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-evenly",
     alignItems: "flex-start",
-    backgroundColor: "orange",
     width: "80%",
   },
 
@@ -54,7 +101,11 @@ const estilos = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: "red",
-    width: "80%",
+    width: "100%",
+    backgroundColor: corPrimaria,
+  },
+
+  botaoRodape: {
+    padding: 16,
   },
 });
