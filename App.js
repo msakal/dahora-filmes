@@ -1,6 +1,6 @@
 import {
-  Button,
   Image,
+  Pressable,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -9,6 +9,7 @@ import {
 import logo from "./assets/images/logo.png";
 import { useFonts } from "expo-font";
 import React from "react";
+const corPrimaria = "#5451a6";
 
 const App = () => {
   const [fonteCarregada] = useFonts({
@@ -25,13 +26,23 @@ const App = () => {
       </View>
 
       <View style={estilos.viewBotoes}>
-        <Button title="Buscar Filmes" />
-        <Button title="Favoritos" />
+        <Pressable style={estilos.botaoInicial}>
+          <Text style={estilos.textoBotao}>Buscar Filmes</Text>
+        </Pressable>
+
+        <Pressable style={estilos.botaoInicial}>
+          <Text style={estilos.textoBotao}>Favoritos</Text>
+        </Pressable>
       </View>
 
       <View style={estilos.viewRodape}>
-        <Button title="Privacidade" />
-        <Button title="Sobre" />
+        <Pressable style={estilos.botaoRodape}>
+          <Text style={estilos.textoBotao}>Privacidade</Text>
+        </Pressable>
+
+        <Pressable style={estilos.botaoRodape}>
+          <Text style={estilos.textoBotao}>Sobre</Text>
+        </Pressable>
       </View>
     </SafeAreaView>
   );
@@ -52,6 +63,17 @@ const estilos = StyleSheet.create({
     height: 128,
   },
 
+  botaoInicial: {
+    borderStyle: "solid",
+    borderWidth: 2,
+    padding: 16,
+    backgroundColor: corPrimaria,
+  },
+
+  textoBotao: {
+    color: "white",
+  },
+
   viewLogo: {
     flex: 3,
     width: "80%",
@@ -63,7 +85,7 @@ const estilos = StyleSheet.create({
   tituloApp: {
     fontSize: 28,
     fontFamily: "monoton",
-    color: "#5451a6",
+    color: corPrimaria,
   },
 
   viewBotoes: {
@@ -79,6 +101,11 @@ const estilos = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    width: "80%",
+    width: "100%",
+    backgroundColor: corPrimaria,
+  },
+
+  botaoRodape: {
+    padding: 16,
   },
 });
