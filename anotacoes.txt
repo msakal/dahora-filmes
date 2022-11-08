@@ -10,3 +10,16 @@ API TheMovieDB -> fazer cadastro
 - depois no App.js, fazer o import: import { Ionicons } from '@expo/vector-icons/Ionicons';
 
 https://icons.expo.fyi/AntDesign/rightcircle
+
+branch - 04
+https://reactnative.dev/docs/scrollview
+
+** instalar as bibliotecas:
+https://reactnavigation.org/
+ (recursos para navegação)
+ - npm install @react-navigation/native
+ - npx expo install react-native-screens react-native-safe-area-context
+ - npm install @react-navigation/native-stack
+
+* Depois fazer os import no App.js
+ - NavigationContainer e createNativeStackNavigator
