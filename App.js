@@ -1,60 +1,43 @@
-import { Button, SafeAreaView, StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { StyleSheet, StatusBar } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+import Home from "./src/screens/Home";
+import Favoritos from "./src/screens/Favoritos";
+import FormBusca from "./src/screens/FormBusca";
+import Sobre from "./src/screens/Sobre";
+import Privacidade from "./src/screens/Privacidade";
 
 const App = () => {
+  /* Inicializando através de uma constante o gerenciados de navegação Stack (pilha de telas) */
+  const Stack = createNativeStackNavigator();
+
   return (
-    <SafeAreaView style={estilos.container}>
-      <View style={estilos.viewLogo}>
-        <Text>Dá Hora Filmes</Text>
-      </View>
+    <>
+      <StatusBar />
 
-      <View style={estilos.viewBotoes}>
-        <Button title="Buscar Filmes" />
-        <Button title="Favoritos" />
-      </View>
-
-      <View style={estilos.viewRodape}>
-        <Button title="Privacidade" />
-        <Button title="Sobre" />
-      </View>
-    </SafeAreaView>
+      {/* O navivagtionContainer deve envolver todas as telas navegáveis do nosso App */}
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen
+            component={Home}
+            name="Home"
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            component={FormBusca}
+            name="FormBusca"
+            options={{ title: "Buscar Filmes" }}
+          />
+          <Stack.Screen component={Favoritos} name="Favoritos" />
+          <Stack.Screen component={Privacidade} name="Privacidade" />
+          <Stack.Screen component={Sobre} name="Sobre" />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
   );
 };
 
 export default App;
 
-const estilos = StyleSheet.create({
-  container: {
-    backgroundColor: "yellow",
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  viewLogo: {
-    flex: 3,
-    width: "80%",
-    backgroundColor: "green",
-    textAlign: "center",
-    justifyContent: "flex-end",
-    alignItems: "center",
-  },
-
-  viewBotoes: {
-    flex: 2,
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-    alignItems: "flex-start",
-    backgroundColor: "orange",
-    width: "80%",
-  },
-
-  viewRodape: {
-    flex: 0.5,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    backgroundColor: "red",
-    width: "80%",
-  },
-});
+const estilos = StyleSheet.create({});
