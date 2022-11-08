@@ -19,8 +19,16 @@ const App = () => {
       {/* O navivagtionContainer deve envolver todas as telas navegáveis do nosso App */}
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen component={Home} name="Home" />
-          <Stack.Screen component={FormBusca} name="FormBusca" />
+          <Stack.Screen
+            component={Home}
+            name="Home"
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            component={FormBusca}
+            name="FormBusca"
+            options={{ title: "Buscar Filmes" }}
+          />
           <Stack.Screen component={Favoritos} name="Favoritos" />
           <Stack.Screen component={Privacidade} name="Privacidade" />
           <Stack.Screen component={Sobre} name="Sobre" />
