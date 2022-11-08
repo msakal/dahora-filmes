@@ -1,13 +1,13 @@
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 
-const FormBusca = () => {
+const Privacidade = () => {
   return (
     <SafeAreaView>
-      <Text>FormBusca</Text>
+      <Text>Privacidade</Text>
     </SafeAreaView>
   );
 };
 
-export default FormBusca;
+export default Privacidade;
 
 const styles = StyleSheet.create({});

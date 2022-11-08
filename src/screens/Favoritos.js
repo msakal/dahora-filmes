@@ -1,11 +1,10 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 
 const Favoritos = () => {
   return (
-    <View>
+    <SafeAreaView>
       <Text>Favoritos</Text>
-    </View>
+    </SafeAreaView>
   );
 };
 
