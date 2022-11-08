@@ -10,9 +10,9 @@ const App = () => {
     <>
       {/* opções para o barStyle: dark-content, light-content ou default */}
       <StatusBar barStyle="default" />
-      {/*  <FormBusca />
+      <FormBusca />
       <Favoritos />
-      <Sobre /> */}
+      {/* <Sobre /> */}
       <Privacidade />
     </>
   );

@@ -2,7 +2,7 @@ import { SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
 
 const Privacidade = () => {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={estilos.container}>
       <ScrollView>
         <Text style={estilos.titulo}>
           Política de Privacidade para o app Dá Hora Filmes
@@ -96,6 +96,11 @@ const Privacidade = () => {
 export default Privacidade;
 
 const estilos = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 8,
+  },
+
   titulo: {
     fontWeight: "bold",
     fontSize: 18,
