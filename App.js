@@ -10,10 +10,11 @@ const App = () => {
     <>
       {/* opções para o barStyle: dark-content, light-content ou default */}
       <StatusBar barStyle="default" />
-      <FormBusca />
+      <Home />
+      {/* <FormBusca />
       <Favoritos />
-      {/* <Sobre /> */}
-      <Privacidade />
+      <Sobre />
+      <Privacidade /> */}
     </>
   );
 };
