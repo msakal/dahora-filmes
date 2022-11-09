@@ -21,6 +21,7 @@ const FormBusca = () => {
     setFilme(valorDigitado);
   };
 
+  /* Função chamada toda vez que o botão for pressionado (usando a prop onPress do Button) */
   const inputTexto = () => {
     if (!filme) {
       Alert.alert("Ops!", "Você deve digitar o nome de um filme"),
