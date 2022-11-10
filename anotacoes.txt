@@ -32,3 +32,8 @@ branch - 06
  - chave api
   - 51cc627fa6cdbb5bd0d301f382baf07e
  - https://www.themoviedb.org/about/logos-attribution
+ - https://developers.themoviedb.org/3/search/search-movies
+
+ ** biblioteca
+ - https://www.npmjs.com/package/axios
+  - instalação (npm install axios)
