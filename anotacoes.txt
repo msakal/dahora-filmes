@@ -28,3 +28,7 @@ https://reactnavigation.org/
 branch - 06
  ** api gratuita
  - https://www.themoviedb.org/?language=pt-BR
+
+ - chave api
+  - 51cc627fa6cdbb5bd0d301f382baf07e
+ - https://www.themoviedb.org/about/logos-attribution
