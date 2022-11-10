@@ -1,0 +1,34 @@
+API TheMovieDB -> fazer cadastro
+
+- Atalho <rnfes>
+
+- npm install expo-font <instalando uma fonte>
+
+*após finalizar o branch 02, instalar uma biblioteca de ícones
+ no google (expo vector icons)
+- instalação no terminal do VSCode:  npm i @expo/vector-icons
+- depois no App.js, fazer o import: import { Ionicons } from '@expo/vector-icons/Ionicons';
+
+https://icons.expo.fyi/AntDesign/rightcircle
+
+branch - 04
+https://reactnative.dev/docs/scrollview
+
+** instalar as bibliotecas:
+https://reactnavigation.org/
+ (recursos para navegação)
+ - npm install @react-navigation/native
+ - npx expo install react-native-screens react-native-safe-area-context
+ - npm install @react-navigation/native-stack
+
+* Depois fazer os import no App.js
+ - NavigationContainer e createNativeStackNavigator
+
+
+branch - 06
+ ** api gratuita
+ - https://www.themoviedb.org/?language=pt-BR
+
+ - chave api
+  - 51cc627fa6cdbb5bd0d301f382baf07e
+ - https://www.themoviedb.org/about/logos-attribution
