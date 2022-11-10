@@ -12,7 +12,7 @@ import { useState } from "react";
 
 const corPrimaria = "#5451a6";
 
-const FormBusca = () => {
+const FormBusca = ({ navigation }) => {
   /* state para o filme que será buscado */
   const [filme, setFilme] = useState("");
 
@@ -28,7 +28,11 @@ const FormBusca = () => {
         [{ filme: "OK" }];
       return;
     }
-    Alert.alert("Você procurou por:", filme), [{ filme: "OK" }];
+    /* Alert.alert("Você procurou por:", filme), [{ filme: "OK" }]; */
+
+    /* Usamos a prop navigation (que vem no React Navigation programando no App) para acessar esta tela, 
+    passamos como objeto os dados digitados no formulário (neste caso, filme). */
+    navigation.navigate("Resultados", { filme });
   };
 
   return (

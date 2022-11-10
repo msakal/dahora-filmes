@@ -23,3 +23,8 @@ https://reactnavigation.org/
 
 * Depois fazer os import no App.js
  - NavigationContainer e createNativeStackNavigator
+
+
+branch - 06
+ ** api gratuita
+ - https://www.themoviedb.org/?language=pt-BR
