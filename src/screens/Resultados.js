@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+
 import api from "../services/api";
 import apiKey from "../../apiKey";
+import Loading from "../components/Loading";
 
 const Resultados = ({ route }) => {
   const { filme } = route.params;
@@ -28,11 +30,11 @@ const Resultados = ({ route }) => {
         setResultados(resposta.data.results);
 
         /* Simulando um tempo de carregamento lento usando temporizador setInterval */
-        /* setInterval(() => {
+        setInterval(() => {
           setLoading(false);
-        }, 3000); */
+        }, 3000);
 
-        setLoading(false);
+        /* setLoading(false); */
       } catch (error) {
         console.log("Deu ruim na busca da API: " + error.message);
       }
@@ -40,7 +42,7 @@ const Resultados = ({ route }) => {
     buscarFilmes();
   }, []);
 
-  if (loading) return <Text>Carregando filmes...</Text>;
+  if (loading) return <Loading />;
 
   return (
     <SafeAreaView style={estilos.container}>
@@ -61,6 +63,7 @@ const estilos = StyleSheet.create({
     flex: 1,
     padding: 16,
   },
+
   viewFilmes: {
     marginVertical: 8,
   },
