@@ -5,7 +5,9 @@ import apiKey from "../../apiKey";
 
 const Resultados = ({ route }) => {
   const { filme } = route.params;
-  const [resultados, seteResultados] = useState([]);
+
+  const [resultados, setResultados] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   /* useEffect: hook do React que executa operações no momento em que o componente (neste caso, Resultado) é renderizado. */
   useEffect(() => {
@@ -23,13 +25,22 @@ const Resultados = ({ route }) => {
             include_adult: false,
           },
         });
-        seteResultados(resposta.data.results);
+        setResultados(resposta.data.results);
+
+        /* Simulando um tempo de carregamento lento usando temporizador setInterval */
+        /* setInterval(() => {
+          setLoading(false);
+        }, 3000); */
+
+        setLoading(false);
       } catch (error) {
         console.log("Deu ruim na busca da API: " + error.message);
       }
     }
     buscarFilmes();
   }, []);
+
+  if (loading) return <Text>Carregando filmes...</Text>;
 
   return (
     <SafeAreaView style={estilos.container}>
