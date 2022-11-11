@@ -37,3 +37,7 @@ branch - 06
  ** biblioteca
  - https://www.npmjs.com/package/axios
   - instalação (npm install axios)
+
+* criar na raiz o 'apiKey.js' com as informações da chave
+const apiKey = 'CHAVE';
+export default apiKey;
