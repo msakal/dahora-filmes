@@ -41,3 +41,19 @@ branch - 06
 * criar na raiz o 'apiKey.js' com as informações da chave
 const apiKey = 'CHAVE';
 export default apiKey;
+
+- 08 branch
+ - Recortando:
+ resultados.map((resultado) => {
+            return (
+              <View key={resultado.id}>
+                <Image
+                  style={estilos.imagem}
+                  source={{
+                    uri: `https://image.tmdb.org/t/p/original/${resultado.poster_path}`,
+                  }}
+                />
+                <Text> {resultado.title} </Text>
+              </View>
+            );
+          })

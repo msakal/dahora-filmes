@@ -83,3 +83,10 @@ Por fim, cada botão (Pressable) existente em `Home` cujo objetivo é navegar pa
 - Aplicar useState para captura do que é digitado no campo de formulário
 - Usar um componente de alerta para validação: exibir mensagem na tela caso o usuário clique no botão sem preencher nada no formulário
 - Usar o componente de alerta para mostrar mensagem dizendo "Você procurou pelo filme {nome do filme digitado}..."
+
+## Branch 08
+
+### Desafios:
+
+1. Componente separador
+2. E se não tiver resultados ?

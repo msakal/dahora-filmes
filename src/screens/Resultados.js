@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
-import { SafeAreaView, StyleSheet, Text, View, Image } from "react-native";
+import { SafeAreaView, StyleSheet, Text, View, FlatList } from "react-native";
 
 import api from "../services/api";
 import apiKey from "../../apiKey";
 import Loading from "../components/Loading";
+import CardFilme from "../components/CardFilme";
+import ItemSeparador from "../components/ItemSeparador";
+import ItemVazio from "../components/ItemVazio";
 
 const Resultados = ({ route }) => {
   const { filme } = route.params;
@@ -54,20 +57,19 @@ const Resultados = ({ route }) => {
 
       {/* Se loading for false, renderize o resultado map */}
       <View style={estilos.viewFilmes}>
-        {!loading &&
-          resultados.map((resultado) => {
-            return (
-              <View key={resultado.id}>
-                <Image
-                  style={estilos.imagem}
-                  source={{
-                    uri: `https://image.tmdb.org/t/p/original/${resultado.poster_path}`,
-                  }}
-                />
-                <Text> {resultado.title} </Text>
-              </View>
-            );
-          })}
+        {!loading && (
+          <FlatList
+            /* Visualização de forma Horizontal */
+            /* horizontal={true} */
+            ItemSeparatorComponent={ItemSeparador}
+            ListEmptyComponent={ItemVazio}
+            data={resultados}
+            renderItem={({ item }) => {
+              return <CardFilme filme={item} />;
+            }}
+            keyExtractor={(item) => item.id}
+          />
+        )}
       </View>
     </SafeAreaView>
   );
@@ -83,9 +85,6 @@ const estilos = StyleSheet.create({
 
   viewFilmes: {
     marginVertical: 8,
-  },
-
-  imagem: {
-    height: 125,
+    alignItems: "center",
   },
 });
