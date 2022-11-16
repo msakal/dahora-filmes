@@ -33,11 +33,12 @@ branch - 06
   - 51cc627fa6cdbb5bd0d301f382baf07e
  - https://www.themoviedb.org/about/logos-attribution
  - https://developers.themoviedb.org/3/search/search-movies
-
+ 
  ** biblioteca
  - https://www.npmjs.com/package/axios
   - instalação (npm install axios)
 
+- Site de busca dos icones: 'icons.expo.fyi' -->  filtrar por Ionicons
 * criar na raiz o 'apiKey.js' com as informações da chave
 const apiKey = 'CHAVE';
 export default apiKey;

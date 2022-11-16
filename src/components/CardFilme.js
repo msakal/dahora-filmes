@@ -1,4 +1,6 @@
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
+/* Site de busca dos icones: 'icons.expo.fyi' -->  filtrar por Ionicons*/
+import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 
 const CardFilme = ({ filme }) => {
@@ -8,6 +10,7 @@ const CardFilme = ({ filme }) => {
     <View style={estilos.card}>
       <Image
         style={estilos.imagem}
+        resizeMode="cover"
         source={{
           uri: `https://image.tmdb.org/t/p/original/${poster_path}`,
         }}
@@ -17,11 +20,15 @@ const CardFilme = ({ filme }) => {
 
         <View style={estilos.botoes}>
           <Pressable style={estilos.botao}>
-            <Text style={estilos.textoBotao}>Leia mais</Text>
+            <Text style={estilos.textoBotao}>
+              <Ionicons name="book" size={12} /> Leia mais
+            </Text>
           </Pressable>
 
           <Pressable style={estilos.botao}>
-            <Text style={estilos.textoBotao}>Salvar</Text>
+            <Text style={estilos.textoBotao}>
+              <Ionicons name="add-circle" size={12} /> Salvar
+            </Text>
           </Pressable>
         </View>
       </View>
@@ -33,8 +40,6 @@ export default CardFilme;
 
 const estilos = StyleSheet.create({
   card: {
-    /* width: "95%",
-    marginHorizontal: "2,5%", */
     marginVertical: 4,
     flexDirection: "row",
     borderWidth: 2,
@@ -60,5 +65,22 @@ const estilos = StyleSheet.create({
     fontSize: 16,
     paddingVertical: 8,
     textAlign: "center",
+  },
+
+  botoes: {
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    marginTop: 8,
+  },
+  botao: {
+    padding: 8,
+    borderWidth: 1,
+    borderColor: "#5451a6",
+  },
+
+  textoBotao: {
+    color: "#5451a6",
+    fontSize: 12,
+    textTransform: "uppercase",
   },
 });
