@@ -61,8 +61,13 @@ const Resultados = ({ route }) => {
           <FlatList
             /* Visualização de forma Horizontal */
             /* horizontal={true} */
+            showsVerticalScrollIndicator={false}
             ItemSeparatorComponent={ItemSeparador}
-            ListEmptyComponent={ItemVazio}
+            ListEmptyComponent={
+              <View>
+                <Text style={estilos.semFilme}>Não há filmes</Text>
+              </View>
+            }
             data={resultados}
             renderItem={({ item }) => {
               return <CardFilme filme={item} />;
@@ -85,6 +90,13 @@ const estilos = StyleSheet.create({
 
   viewFilmes: {
     marginVertical: 8,
-    alignItems: "center",
+    /* alignItems: "center", */
+  },
+
+  semFilme: {
+    textAlign: "center",
+    fontSize: 24,
+    fontWeight: "bold",
+    marginVertical: 60,
   },
 });

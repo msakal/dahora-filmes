@@ -90,3 +90,14 @@ Por fim, cada botão (Pressable) existente em `Home` cujo objetivo é navegar pa
 
 1. Componente separador
 2. E se não tiver resultados ?
+
+branch 08-FlatList-e-componentes-adicionais
+Em Resultados, aplicação do componente nativo FlatList para carregamento dos filmes
+FlatList é semelhante ao ScrollView, no entanto, tem uma perfomance melhor para carregamento de dados cujo volume é grande, variável e vindos de fontes externas (APIs).
+
+Principais props do FlatList:
+data: fonte de dados (no nosso app, é o array resultados)
+renderItem: função que retorna o componente personalizado com os dados (item) existentes em resultados
+keyExtractor: função que extrai dos dados (item) um valor que servirá como key para cada registro (em nosso app, id)
+[opcional] ItemSeparatorComponent: aponta para um componente personalizado responsável por servir como um separador de itens (em nosso app, o item é cada filme)
+[opcional] ListEmptyComponent: aponta para um componente personalizado responsável por exibir uma mensagem para o caso de não existir itens (ou seja, resultados sem filmes)
