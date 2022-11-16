@@ -8,6 +8,7 @@ import FormBusca from "./src/screens/FormBusca";
 import Sobre from "./src/screens/Sobre";
 import Privacidade from "./src/screens/Privacidade";
 import Resultados from "./src/screens/Resultados";
+import Detalhes from "./src/screens/Detalhes";
 
 const App = () => {
   /* Inicializando através de uma constante o gerenciados de navegação Stack (pilha de telas) */
@@ -43,6 +44,7 @@ const App = () => {
           <Stack.Screen component={Sobre} name="Sobre" />
 
           <Stack.Screen component={Resultados} name="Resultados" />
+          <Stack.Screen component={Detalhes} name="Detalhes" />
         </Stack.Navigator>
       </NavigationContainer>
     </>

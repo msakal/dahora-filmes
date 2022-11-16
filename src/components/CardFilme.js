@@ -1,10 +1,18 @@
-import { StyleSheet, Text, View, Image, Pressable } from "react-native";
+import { StyleSheet, Text, View, Image, Pressable, Alert } from "react-native";
 /* Site de busca dos icones: 'icons.expo.fyi' -->  filtrar por Ionicons*/
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 
 const CardFilme = ({ filme }) => {
   const { title, poster_path } = filme;
+
+  const navigation = useNavigation();
+
+  const leiaMais = () => {
+    /* Alert.alert("Vai!", "Detalhes do filme..."); */
+    navigation.navigate("Detalhes", { filme });
+  };
 
   return (
     <View style={estilos.card}>
@@ -19,7 +27,7 @@ const CardFilme = ({ filme }) => {
         <Text style={estilos.titulo}> {title} </Text>
 
         <View style={estilos.botoes}>
-          <Pressable style={estilos.botao}>
+          <Pressable style={estilos.botao} onPress={leiaMais}>
             <Text style={estilos.textoBotao}>
               <Ionicons name="book" size={12} /> Leia mais
             </Text>
