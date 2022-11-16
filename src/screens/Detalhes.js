@@ -1,4 +1,10 @@
-import { ImageBackground, StyleSheet, Text, View } from "react-native";
+import {
+  ImageBackground,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -17,8 +23,19 @@ const Detalhes = ({ route }) => {
             uri: `https://image.tmdb.org/t/p/original/${filme.backdrop_path}`,
           }}
         >
-          <Text> {filme.title} </Text>
+          <Text style={estilos.titulo}> {filme.title} </Text>
         </ImageBackground>
+
+        <View style={estilos.conteudo}>
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <Text style={estilos.avaliacao}>
+              Avaliação: {filme.vote_average} | Lançamento: {filme.release_date}
+            </Text>
+            <Text style={estilos.descricao}>
+              {filme.overview || "Sem descrição"}
+            </Text>
+          </ScrollView>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -34,11 +51,38 @@ const estilos = StyleSheet.create({
   /* Aplicando (padding) aqui, pois no IOS não funciona direto na <SafeAreaView> */
   container: {
     flex: 1,
+    /* padding: 8, -> sem o padding, a imgem usa toda área. */
   },
 
   imagem: {
     height: 200,
+    justifyContent: "center",
   },
 
-  title: {},
+  avaliacao: {
+    textAlign: "center",
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#5451a6",
+  },
+
+  titulo: {
+    backgroundColor: "rgba(0, 0, 0, 0.75)",
+    color: "white",
+    textAlign: "center",
+    padding: 16,
+    fontWeight: "bold",
+    fontSize: 16,
+  },
+
+  conteudo: {
+    flex: 1 /* Necessário para o scrollview funcionar */,
+    padding: 16,
+  },
+
+  descricao: {
+    fontSize: 16,
+    lineHeight: 20,
+    marginVertical: 8,
+  },
 });
