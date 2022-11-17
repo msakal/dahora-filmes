@@ -21,7 +21,7 @@ const CardFilme = ({ filme }) => {
         style={estilos.imagem}
         resizeMode="cover"
         source={
-          filme.backdrop_path
+          poster_path
             ? { uri: `https://image.tmdb.org/t/p/original/${poster_path}` }
             : fotoAlternativa
         }
