@@ -40,7 +40,7 @@ const CardFilme = ({ filme }) => {
     /* 5. Finalmente, salvamos COMO STRING no storage do dispositivo. */
     await AsyncStorage.setItem("@favoritos", JSON.stringify(listaDeFilmes));
 
-    console.log(listaDeFilmes);
+    /* console.log(listaDeFilmes); */
     Alert.alert("Favoritos", "Filme salvo com sucesso ...");
   };
 
