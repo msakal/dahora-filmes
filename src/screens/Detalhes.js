@@ -9,6 +9,7 @@ import {
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import fotoAlternativa from "../../assets/images/foto-alternativa.jpg";
+import { formataData } from "../utils/funcoes";
 
 /* Prop de route para acesso aos dados trafegados entre a navegação entre as tabelas/rotas */
 const Detalhes = ({ route }) => {
@@ -35,7 +36,8 @@ const Detalhes = ({ route }) => {
         <View style={estilos.conteudo}>
           <ScrollView showsVerticalScrollIndicator={false}>
             <Text style={estilos.avaliacao}>
-              Avaliação: {filme.vote_average} | Lançamento: {filme.release_date}
+              Avaliação: {filme.vote_average} | Lançamento:{" "}
+              {formataData(filme.release_date)}
             </Text>
             <Text style={estilos.descricao}>
               {filme.overview || "Sem descrição"}
