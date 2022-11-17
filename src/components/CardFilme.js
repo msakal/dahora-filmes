@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image, Pressable, Alert } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
+import fotoAlternativa from "../../assets/images/foto-alternativa.jpg";
 
 const CardFilme = ({ filme }) => {
   const { title, poster_path } = filme;
@@ -19,9 +20,11 @@ const CardFilme = ({ filme }) => {
       <Image
         style={estilos.imagem}
         resizeMode="cover"
-        source={{
-          uri: `https://image.tmdb.org/t/p/original/${poster_path}`,
-        }}
+        source={
+          filme.backdrop_path
+            ? { uri: `https://image.tmdb.org/t/p/original/${poster_path}` }
+            : fotoAlternativa
+        }
       />
       <View style={estilos.corpo}>
         <Text style={estilos.titulo}> {title} </Text>

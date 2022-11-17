@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import logo from "../../assets/images/logo.png";
+import fotoAlternativa from "../../assets/images/foto-alternativa.jpg";
 
 /* Prop de route para acesso aos dados trafegados entre a navegação entre as tabelas/rotas */
 const Detalhes = ({ route }) => {
@@ -21,11 +21,13 @@ const Detalhes = ({ route }) => {
       <View style={estilos.container}>
         <ImageBackground
           style={estilos.imagem}
-          source={{
-            uri: `https://image.tmdb.org/t/p/original/${filme.backdrop_path}` || (
-              <Image style={estilos.semImagem} source={logo} />
-            ),
-          }}
+          source={
+            filme.backdrop_path
+              ? {
+                  uri: `https://image.tmdb.org/t/p/original/${filme.backdrop_path}`,
+                }
+              : fotoAlternativa
+          }
         >
           <Text style={estilos.titulo}> {filme.title} </Text>
         </ImageBackground>
