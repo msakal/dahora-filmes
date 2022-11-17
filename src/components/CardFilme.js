@@ -1,5 +1,8 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import { StyleSheet, Text, View, Image, Pressable, Alert } from "react-native";
 /* Site de busca dos icones: 'icons.expo.fyi' -->  filtrar por Ionicons*/
+
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
@@ -10,9 +13,24 @@ const CardFilme = ({ filme }) => {
 
   const navigation = useNavigation();
 
+  /* função leia mais */
   const leiaMais = () => {
     /* Alert.alert("Vai!", "Detalhes do filme..."); */
     navigation.navigate("Detalhes", { filme });
+  };
+
+  /* função salvar */
+  const salvar = async () => {
+    /* return Alert.alert("Favoritos", "Salvando.."); */
+    /* ETAPAS para uso do asyncStorage:
+      1. Carregamento do storage do aparelho (se houver, caso contrario retorna null).
+      2. Havendo storage prévio, tranformar os dados do filme um objetos e os guardamos numa lista (array).
+      3. Se a lista não for indefinida, vamos iniciá-la vazia.
+      4. Adicionamos os dados do filme na lista (array).
+      5. Finalmente, salvamos no storage do dispositivo.
+     */
+    /* 1. */
+    const filmesFavoritos = await AsyncStorage.getItem("@favoritos");
   };
 
   return (
@@ -36,7 +54,7 @@ const CardFilme = ({ filme }) => {
             </Text>
           </Pressable>
 
-          <Pressable style={estilos.botao}>
+          <Pressable style={estilos.botao} onPress={salvar}>
             <Text style={estilos.textoBotao}>
               <Ionicons name="add-circle" size={12} /> Salvar
             </Text>
