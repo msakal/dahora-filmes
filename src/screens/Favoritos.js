@@ -46,11 +46,35 @@ const Favoritos = () => {
     Alert.alert("Favoritos", "Favoritos excluidos!");
   };
 
+  const excluirUmFavorito = async (indice) => {
+    /* Alert.alert(`exluindo um favorito .. ${indice}`); */
+    /* Etapas para excluir: */
+
+    /* 1. Conhecendo o índice, remover o elemento (filme do array listaFavoritos)
+    splice.: indicamos o indice de referência (na prática, o indice do filme que queremos remover e, 
+    a partir deste indice, a quantidade de elementos que queremos remover. Como aqui queremos apagar
+    o próprio filme escolhido, passamos 1).*/
+    listaFavoritos.splice(indice, 1);
+
+    /* 2. Atualizar p storage com a lista atualizada (ou seja, sem o filme) 
+    Obs: é necessário transformar em string antes de gravar no Storage. */
+    await AsyncStorage.setItem("@favoritos", JSON.stringify(listaFavoritos));
+
+    /* 3. Recarregar do storage a nova lista de favoritos
+    Obs: é necessário transformar em array/objeto antes de manipular na aplicação*/
+    const listaDeFilmes = JSON.parse(await AsyncStorage.getItem("@favoritos"));
+
+    /* 4. Atualizar o state para um novo render na tela com a lista de favoritos */
+    setListaDeFavoritos(listaDeFilmes);
+  };
+
   return (
     <SafeAreaView style={estilos.safeContainer}>
       <View style={estilos.container}>
         <View style={estilos.cabecalho}>
-          <Text>Quantidade: {listaFavoritos.length} </Text>
+          <Text style={estilos.prtQtde}>
+            Quantidade: {listaFavoritos.length}{" "}
+          </Text>
           <Pressable
             style={estilos.botaoExcluirTudo}
             onPress={excluirFavoritos}
@@ -64,11 +88,16 @@ const Favoritos = () => {
 
         {/* Programação necessária para acessar a lista de favoritos e exibir o título de cada filme */}
         <ScrollView showsVerticalScrollIndicator={false}>
-          {listaFavoritos.map((filmeFavorito) => {
+          {listaFavoritos.map((filmeFavorito, indice) => {
             return (
               <Pressable key={filmeFavorito.id} style={estilos.itemFilme}>
-                <Text style={estilos.titulo}> {filmeFavorito.title} </Text>
-                <Pressable style={estilos.botaoExcluir}>
+                <Text style={estilos.titulo}> {filmeFavorito.title}</Text>
+                <Pressable
+                  style={estilos.botaoExcluir}
+                  /* onPress={excluirUmFavorito} */
+                  /* onPress={() => excluirUmFavorito(indice)} */
+                  onPress={excluirUmFavorito.bind(this, indice)}
+                >
                   <Ionicons name="trash" size={18} color="white" />
                 </Pressable>
               </Pressable>
@@ -95,7 +124,7 @@ const estilos = StyleSheet.create({
   },
 
   prtQtde: {
-    textAlign: "center",
+    padding: 8,
     fontSize: 16,
     fontWeight: "bold",
     color: "#5451a6",
@@ -105,7 +134,7 @@ const estilos = StyleSheet.create({
     padding: 8,
     flexDirection: "row",
     justifyContent: "space-between",
-    backgroundColor: "#ccc",
+    backgroundColor: "#eee8fc",
     marginVertical: 8,
     borderRadius: 4,
   },
