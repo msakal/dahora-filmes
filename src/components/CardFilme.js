@@ -34,6 +34,16 @@ const CardFilme = ({ filme }) => {
       listaDeFilmes = [];
     }
 
+    /* Etapa de verificação de filme já salvo */
+    for (let filmeExistente in listaDeFilmes) {
+      /* Para cada filme existente na listaDeFilmes (se existir), vamos verificar se o id do filme existente
+      é igual ao id do filme do card */
+      if (listaDeFilmes[filmeExistente].id == filme.id) {
+        Alert.alert("Ops!", "Você já salvou esse filme!");
+        return;
+      }
+    }
+
     /* 4. Adicionamos os dados do filme na lista (array). */
     listaDeFilmes.push(filme);
 
