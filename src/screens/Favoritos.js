@@ -49,22 +49,33 @@ const Favoritos = () => {
   return (
     <SafeAreaView style={estilos.safeContainer}>
       <View style={estilos.container}>
-        <Text style={estilos.prtQtde}>
-          Quantidade: {listaFavoritos.length}{" "}
-        </Text>
+        <View style={estilos.cabecalho}>
+          <Text>Quantidade: {listaFavoritos.length} </Text>
+          <Pressable
+            style={estilos.botaoExcluirTudo}
+            onPress={excluirFavoritos}
+          >
+            <Text style={estilos.textoExcluirTudo}>
+              <Ionicons name="trash-outline" size={16} />
+              Excluir Favoritos
+            </Text>
+          </Pressable>
+        </View>
 
         {/* Programação necessária para acessar a lista de favoritos e exibir o título de cada filme */}
-        {listaFavoritos.map((filmeFavorito) => {
-          return (
-            <Pressable key={filmeFavorito.id} style={estilos.itemFilme}>
-              <Text> {filmeFavorito.title} </Text>
-              <Pressable style={estilos.botaoExcluir}>
-                <Ionicons name="trash" size={24} color="white" />
+        <ScrollView showsVerticalScrollIndicator={false}>
+          {listaFavoritos.map((filmeFavorito) => {
+            return (
+              <Pressable key={filmeFavorito.id} style={estilos.itemFilme}>
+                <Text style={estilos.titulo}> {filmeFavorito.title} </Text>
+                <Pressable style={estilos.botaoExcluir}>
+                  <Ionicons name="trash" size={18} color="white" />
+                </Pressable>
               </Pressable>
-            </Pressable>
-          );
-        })}
-        <Button title="Excluir favoritos" onPress={excluirFavoritos} />
+            );
+          })}
+        </ScrollView>
+        {/* <Button title="Excluir favoritos" onPress={excluirFavoritos} /> */}
       </View>
     </SafeAreaView>
   );
@@ -80,6 +91,7 @@ const estilos = StyleSheet.create({
   container: {
     flex: 1,
     padding: 8,
+    borderStartColor: "white",
   },
 
   prtQtde: {
@@ -100,7 +112,30 @@ const estilos = StyleSheet.create({
 
   botaoExcluir: {
     backgroundColor: "red",
-    padding: 12,
+    padding: 8,
     borderRadius: 4,
+  },
+
+  cabecalho: {
+    marginVertical: 8,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+
+  botaoExcluirTudo: {
+    borderWidth: 1,
+    borderColor: "red",
+    padding: 8,
+    borderRadius: 4,
+  },
+
+  textoExcluirTudo: {
+    color: "red",
+  },
+
+  titulo: {
+    flex: 1,
+    fontSize: 14,
   },
 });
