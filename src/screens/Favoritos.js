@@ -9,12 +9,18 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
 } from "react-native";
 
 import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+
+import fotoAlternativa from "../../assets/images/foto-alternativa.jpg";
 
 const Favoritos = () => {
   const [listaFavoritos, setListaDeFavoritos] = useState([]);
+
+  const navigation = useNavigation();
 
   useEffect(() => {
     async function carregarFavoritos() {
@@ -37,13 +43,35 @@ const Favoritos = () => {
     carregarFavoritos();
   }, []);
 
-  const excluirFavoritos = async () => {
-    /* Usamos o removeItem para apagar os dados dos @favoritos do nosso app */
-    await AsyncStorage.removeItem("@favoritos");
+  const verDetalhes = (filmeSelecionado) => {
+    navigation.navigate("Detalhes", { filme: filmeSelecionado });
+  };
 
-    /* Atualizar o render do componente (removendo da tela os favoritos) */
-    setListaDeFavoritos([]);
-    Alert.alert("Favoritos", "Favoritos excluidos!");
+  const excluirFavoritos = async () => {
+    Alert.alert(
+      "Excluir TODOS",
+      "Tem certeza que deseja excluir TODOS os Favoritos?",
+      [
+        {
+          text: "Cancelar",
+          onPress: () => {
+            return false;
+          },
+          style: "cancel" /* Somente no IOS */,
+        },
+        {
+          text: "Sim, to nem ai",
+          onPress: async () => {
+            /* Usamos o removeItem para apagar os dados dos @favoritos do nosso app */
+            await AsyncStorage.removeItem("@favoritos");
+
+            /* Atualizar o render do componente (removendo da tela os favoritos) */
+            setListaDeFavoritos([]);
+          },
+          style: "destructive",
+        },
+      ]
+    );
   };
 
   const excluirUmFavorito = async (indice) => {
@@ -90,7 +118,24 @@ const Favoritos = () => {
         <ScrollView showsVerticalScrollIndicator={false}>
           {listaFavoritos.map((filmeFavorito, indice) => {
             return (
-              <Pressable key={filmeFavorito.id} style={estilos.itemFilme}>
+              <Pressable
+                /* Dando ação a lista para consulta detalhada do filme */
+                onPress={verDetalhes.bind(this, filmeFavorito)}
+                key={filmeFavorito.id}
+                style={estilos.itemFilme}
+              >
+                <Image
+                  style={estilos.imagem}
+                  resizeMode="cover"
+                  source={
+                    filmeFavorito.poster_path
+                      ? {
+                          uri: `https://image.tmdb.org/t/p/original/${filmeFavorito.poster_path}`,
+                        }
+                      : fotoAlternativa
+                  }
+                />
+
                 <Text style={estilos.titulo}> {filmeFavorito.title}</Text>
                 <Pressable
                   style={estilos.botaoExcluir}
@@ -166,5 +211,10 @@ const estilos = StyleSheet.create({
   titulo: {
     flex: 1,
     fontSize: 14,
+  },
+
+  imagem: {
+    height: 40,
+    width: 40,
   },
 });
