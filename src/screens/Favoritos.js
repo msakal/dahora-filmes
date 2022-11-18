@@ -19,11 +19,15 @@ const Favoritos = () => {
   useEffect(() => {
     async function carregarFavoritos() {
       try {
+        /* Acessar o storage @favoritos e tentar carregar os dados existentes */
         const dados = await AsyncStorage.getItem("@favoritos");
+
+        /* Havendo dados, transformamos eles em array de objetos */
         const filmes = JSON.parse(dados);
 
+        /* Se realmente tem dados (ou seja, não é null), atualizamos o componente */
         if (dados != null) {
-          setListaDeFavoritos(filmes);
+          setListaDeFavoritos(filmes); /* state de dadps do componente */
         }
       } catch (error) {
         console.log("Deu ruim no carregamento" + error.message);
@@ -34,7 +38,10 @@ const Favoritos = () => {
   }, []);
 
   const excluirFavoritos = async () => {
+    /* Usamos o removeItem para apagar os dados dos @favoritos do nosso app */
     await AsyncStorage.removeItem("@favoritos");
+
+    /* Atualizar o render do componente (removendo da tela os favoritos) */
     setListaDeFavoritos([]);
     Alert.alert("Favoritos", "Favoritos excluidos!");
   };
@@ -42,8 +49,9 @@ const Favoritos = () => {
   return (
     <SafeAreaView style={estilos.safeContainer}>
       <View style={estilos.container}>
-        <Text>Quantidade: {listaFavoritos.length} </Text>
-        <Button title="Excluir favoritos" onPress={excluirFavoritos} />
+        <Text style={estilos.prtQtde}>
+          Quantidade: {listaFavoritos.length}{" "}
+        </Text>
 
         {/* Programação necessária para acessar a lista de favoritos e exibir o título de cada filme */}
         {listaFavoritos.map((filmeFavorito) => {
@@ -56,6 +64,7 @@ const Favoritos = () => {
             </Pressable>
           );
         })}
+        <Button title="Excluir favoritos" onPress={excluirFavoritos} />
       </View>
     </SafeAreaView>
   );
@@ -71,6 +80,13 @@ const estilos = StyleSheet.create({
   container: {
     flex: 1,
     padding: 8,
+  },
+
+  prtQtde: {
+    textAlign: "center",
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#5451a6",
   },
 
   itemFilme: {

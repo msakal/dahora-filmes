@@ -29,7 +29,7 @@ const CardFilme = ({ filme }) => {
     /* 2. Havendo storage prévio, tranformar os dados do filme um objetos e os guardamos numa lista (array).*/
     let listaDeFilmes = JSON.parse(filmesFavoritos);
 
-    /* 3. Se a lista não for indefinida, vamos iniciá-la como um array vazio. */
+    /* 3. Se a lista for indefinida, vamos iniciá-la como um array vazio. */
     if (!listaDeFilmes) {
       listaDeFilmes = [];
     }

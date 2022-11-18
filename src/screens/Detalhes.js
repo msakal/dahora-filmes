@@ -15,7 +15,7 @@ import { formataData } from "../utils/funcoes";
 const Detalhes = ({ route }) => {
   /* console.log(route); */
   const { filme } = route.params;
-  console.log(filme);
+  /* console.log(filme); */
 
   return (
     <SafeAreaView style={estilos.safeContainer}>

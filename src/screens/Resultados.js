@@ -33,9 +33,10 @@ const Resultados = ({ route }) => {
         setResultados(resposta.data.results);
 
         /* Simulando um tempo de carregamento lento usando temporizador setInterval */
-        setInterval(() => {
+        /*  setInterval(() => {
           setLoading(false);
-        }, 3000);
+        }, 3000); */
+        setLoading(false);
 
         /* setLoading(false); */
       } catch (error) {
