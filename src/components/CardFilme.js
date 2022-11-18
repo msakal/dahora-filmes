@@ -1,6 +1,14 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { StyleSheet, Text, View, Image, Pressable, Alert } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Pressable,
+  Alert,
+  Vibration,
+} from "react-native";
 /* Site de busca dos icones: 'icons.expo.fyi' -->  filtrar por Ionicons*/
 
 import { Ionicons } from "@expo/vector-icons";
@@ -40,6 +48,7 @@ const CardFilme = ({ filme }) => {
       é igual ao id do filme do card */
       if (listaDeFilmes[filmeExistente].id == filme.id) {
         Alert.alert("Ops!", "Você já salvou esse filme!");
+        Vibration.vibrate();
         return;
       }
     }
